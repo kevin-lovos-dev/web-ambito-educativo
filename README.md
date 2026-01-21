@@ -56,7 +56,7 @@ En el modulo para registrar estudiantes se creo un boton de descarga de un docum
 ## Instalacion y ejecucion
 Clonar el repositorio web
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/kevin-lovos-dev/web-ambito-educa
 ```
 
 Acceder a la carpeta
