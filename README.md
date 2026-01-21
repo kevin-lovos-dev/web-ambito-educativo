@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# 📚 Sistema de Gestión de Estudiantes – Prueba Técnica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una **aplicación web desarrollada en React** como parte de una **prueba técnica**, cuyo objetivo es demostrar el manejo de autenticación, navegación protegida, consumo de APIs y carga masiva de datos mediante archivos CSV.
 
-Currently, two official plugins are available:
+La aplicación permite **autenticarse**, **listar estudiantes** y **registrar múltiples estudiantes a la vez** mediante la carga de un archivo CSV.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tecnologías utilizadas
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React** + **TypeScript**
+- **Vite** (entorno de desarrollo)
+- **React Router DOM** (navegación y rutas protegidas)
+- **Zustand** (manejo de estado global y autenticación)
+- **Axios** (consumo de API REST)
+- **Ant Design** (componentes UI)
+- **Tailwind CSS** (estilos y layout)
+- **React Query (@tanstack/react-query)** (manejo de mutaciones y estados de carga)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔐 Funcionalidades principales
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Autenticación
+- Inicio de sesión con persistencia de sesión.
+- Protección de rutas mediante **guards**.
+- Redirección automática al login cuando no existe sesión activa.
+- Cierre de sesión con limpieza del estado global.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Gestión de estudiantes
+- Listado de estudiantes.
+- Carga masiva de estudiantes mediante archivo **CSV**.
+- Validación del archivo antes de enviarlo al backend.
+- Mensajes de éxito y error al procesar el archivo.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Carga de archivo CSV
+- Subida de uno o varios estudiantes en un solo archivo.
+- Descarga de un archivo CSV de ejemplo.
+- El sistema requiere que el campo **NUE sea único por estudiante**.
+
+---
+
+## 🧠 Manejo de estado (Zustand)
+
+El estado de autenticación se gestiona con **Zustand**, utilizando `persist` para mantener la sesión activa incluso después de recargar la página.
+
+Datos manejados:
+- Token de autenticación
+
+---
+
+## 📄 Archivo CSV
+
+En el modulo para registrar estudiantes se creo un boton de descarga de un documento csv de ejemplo
+
+## Instalacion y ejecucion
+Clonar el repositorio web
+```bash
+git clone <url-del-repositorio>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Acceder a la carpeta
+```bash
+cd web-ambito-educativo
 ```
+
+Instalar dependencias
+```bash
+pnpm install
+```
+
+Ejecutar
+```bash
+pnpm dev
+```
+
+## Objetivo de la prueba técnica
+- Arquitectura clara y modular
+- Buen manejo de estado global
+- Autenticación
+- Uso de librerías modernas del ecosistema React
+- Buenas prácticas en UX/UI y manejo de errores
+
